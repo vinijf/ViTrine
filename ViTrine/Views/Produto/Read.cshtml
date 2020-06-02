@@ -1,10 +1,10 @@
 ﻿@model ViTrine.Models.Produto
 
 @{
-    ViewData["Title"] = "Read";
+    ViewData["Title"] = "Detalhes do Produto";
 }
 
-<h1>Read</h1>
+<h1>Detalhes</h1>
 
 <div>
     <h4>Produto</h4>
@@ -43,6 +43,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Update" asp-route-id="@Model.ProdutoId">Edit</a> |
-    <a asp-action="Index" asp-route-id="@Model.LojaId">Back to List</a>
+    <a asp-action="Update" asp-route-id="@Model.ProdutoId">Editar</a> |
+    <a asp-action="Index" asp-route-id="@Model.LojaId">Voltar</a>
 </div>

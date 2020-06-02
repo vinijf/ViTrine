@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ViTrine.Models.Chat>
+
+@{
+    ViewData["Title"] = "Chats da Loja";
+}
+
+<h1>Chats</h1>
+
+<p>
+    <a asp-controller="Produto" asp-action="Index" asp-route-id="@ViewBag.LojaId">Voltar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Autor
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Read" asp-route-id="@item.ChatId">
+                        @Html.DisplayFor(modelItem => item.AutorMensagem)
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.ChatId">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ViTrine.Models.Mensagem>
+
+@{
+    ViewData["Title"] = "Mensagens";
+}
+
+<h1>Mensagens</h1>
+
+<p>
+    <a asp-action="Send" asp-route-id="@ViewBag.ChatId">Responder</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mensagem
+            </th>
+            <th>
+                Data
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TextoMensagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataMensagem)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index" asp-route-id="@ViewBag.ChatId">Voltar</a>
+</div>

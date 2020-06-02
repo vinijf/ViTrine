@@ -18,6 +18,7 @@ namespace ViTrine.Controllers
         {
             ctx = context;
         }
+
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> Index(Guid Id)

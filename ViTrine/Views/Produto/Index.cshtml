@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<ViTrine.Models.Produto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Produtos";
 }
 
-<h1>Index</h1>
+<h1>Produtos</h1>
 
 <p>
-    <a asp-action="Create" asp-route-id="@ViewBag.LojaId">Create New</a>
+    <a asp-controller="Chat" asp-action="Index" asp-route-id="@ViewBag.LojaId">Chat</a> |
+    <a asp-action="Create" asp-route-id="@ViewBag.LojaId">Adicionar Produto</a> 
 </p>
 <table class="table">
     <thead>
@@ -43,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.PrecoProduto)
             </td>
             <td>
-                <a asp-action="Update" asp-route-id="@item.ProdutoId">Edit</a> |
-                <a asp-action="Read" asp-route-id="@item.ProdutoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProdutoId">Delete</a>
+                <a asp-action="Update" asp-route-id="@item.ProdutoId">Editar</a> |
+                <a asp-action="Read" asp-route-id="@item.ProdutoId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProdutoId">Deletar</a>
             </td>
         </tr>
 }
