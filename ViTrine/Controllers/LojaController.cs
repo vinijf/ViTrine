@@ -25,10 +25,31 @@ namespace ViTrine.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, int? pageNumber, string currentFilter)
         {
-            var lojas = await ctx.Lojas.Where(c => c.UserId == User.Identity.Name).ToListAsync();
-            return View(lojas);
+            ViewData["CurrentFilter"] = searchString;
+
+            var lojas = from p in ctx.Lojas select p;
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                lojas = lojas.Where(l => l.NomeLoja.Contains(searchString)
+                || l.CategoriaLoja.Contains(searchString)
+                || l.CidadeLoja.Contains(searchString));
+            }
+
+            int pageSize = 10;
+
+            return View(await PaginatedList<Loja>.CreateAsync(lojas.Where((c => c.UserId == User.Identity.Name)).AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         [HttpGet]
