@@ -61,7 +61,7 @@ namespace ViTrine.Controllers
 
                 ctx.Add(p);
                 await ctx.SaveChangesAsync();
-                return RedirectToAction("Index", new { Id });
+                return RedirectToAction("Index", new { id = Id });
             }
             return View(c);
         }
@@ -99,7 +99,7 @@ namespace ViTrine.Controllers
 
                 ctx.Update(p);
                 await ctx.SaveChangesAsync();
-                return RedirectToAction("Index", new { p.LojaId });
+                return RedirectToAction("Index", new { id = p.LojaId });
             }
             return View(u);
         }
@@ -111,7 +111,7 @@ namespace ViTrine.Controllers
             ctx.Produtos.Remove(p);
             await ctx.SaveChangesAsync();
 
-            return RedirectToAction("Index", new { p.LojaId });
+            return RedirectToAction("Index", new { id = p.LojaId });
         }
 
         [Authorize]
