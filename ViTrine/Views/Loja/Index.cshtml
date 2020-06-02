@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ViTrine.Models.Loja>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Categoria
+            </th>
+            <th>
+                Telefone
+            </th>
+            <th>
+                Cidade
+            </th>
+            <th>
+                Endereço
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Produto" asp-action="Index" asp-route-id="@item.LojaId">
+                        @Html.DisplayFor(modelItem => item.NomeLoja)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaLoja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TelefoneLoja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CidadeLoja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnderecoLoja)
+                </td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@item.LojaId">Edit</a> |
+                    <a asp-action="Read" asp-route-id="@item.LojaId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.LojaId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

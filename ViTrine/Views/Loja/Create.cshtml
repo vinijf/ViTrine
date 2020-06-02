@@ -1,0 +1,58 @@
+﻿@model ViTrine.Models.LojaView
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Loja</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UrlFotoLoja" class="control-label">Imagem</label>
+                <input asp-for="UrlFotoLoja" class="form-control" />
+                <span asp-validation-for="UrlFotoLoja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeLoja" class="control-label">Nome</label>
+                <input asp-for="NomeLoja" class="form-control" />
+                <span asp-validation-for="NomeLoja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoriaLoja" class="control-label">Categoria</label>
+                <input asp-for="CategoriaLoja" class="form-control" />
+                <span asp-validation-for="CategoriaLoja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelefoneLoja" class="control-label">Telefone</label>
+                <input asp-for="TelefoneLoja" class="form-control" />
+                <span asp-validation-for="TelefoneLoja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CidadeLoja" class="control-label">Cidade</label>
+                <input asp-for="CidadeLoja" class="form-control" />
+                <span asp-validation-for="CidadeLoja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnderecoLoja" class="control-label">Endereço</label>
+                <input asp-for="EnderecoLoja" class="form-control" />
+                <span asp-validation-for="EnderecoLoja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
