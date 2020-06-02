@@ -25,11 +25,20 @@ namespace ViTrine.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Index(Guid Id, string searchString)
+        public async Task<IActionResult> Index(Guid Id, string searchString, int? pageNumber, string currentFilter)
         {
             ViewData["CurrentFilter"] = searchString;
 
             var produtos = from p in ctx.Produtos select p;
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -39,7 +48,9 @@ namespace ViTrine.Controllers
 
             ViewBag.LojaId = Id;
 
-            return View(await produtos.Where(c => c.LojaId == Id).ToListAsync());
+            int pageSize = 2;
+
+            return View(await PaginatedList<Produto>.CreateAsync(produtos.Where((c => c.LojaId == Id)).AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         [HttpGet]
