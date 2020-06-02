@@ -25,13 +25,21 @@ namespace ViTrine.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Index(Guid Id)
+        public async Task<IActionResult> Index(Guid Id, string searchString)
         {
-            var produtos = await ctx.Produtos.Where(c => c.LojaId == Id).ToListAsync();
+            ViewData["CurrentFilter"] = searchString;
+
+            var produtos = from p in ctx.Produtos select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                produtos = produtos.Where(p => p.NomeProduto.Contains(searchString)
+                || p.CategoriaProduto.Contains(searchString));
+            }
 
             ViewBag.LojaId = Id;
 
-            return View(produtos);
+            return View(await produtos.Where(c => c.LojaId == Id).ToListAsync());
         }
 
         [HttpGet]

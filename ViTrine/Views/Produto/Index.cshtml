@@ -10,6 +10,17 @@
     <a asp-controller="Chat" asp-action="Index" asp-route-id="@ViewBag.LojaId">Chat</a> |
     <a asp-action="Create" asp-route-id="@ViewBag.LojaId">Adicionar Produto</a> 
 </p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Pesquisar: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index" asp-route-id="@ViewBag.LojaId">Voltar</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
