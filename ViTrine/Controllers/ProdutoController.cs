@@ -140,7 +140,7 @@ namespace ViTrine.Controllers
 
             if (l.UrlFotoProduto != null)
             {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Imagens");
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
                 UrlImagem = Guid.NewGuid().ToString() + "_" + l.UrlFotoProduto.FileName;
                 string filePath = Path.Combine(uploadsFolder, UrlImagem);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
