@@ -73,7 +73,7 @@ namespace ViTrine.Controllers
 
             ViewBag.LojaId = Id;
 
-            int pageSize = 10;
+            int pageSize = 12;
 
             return View(await PaginatedList<Produto>.CreateAsync(produtos.Where((c => c.LojaId == Id)).AsNoTracking(), pageNumber ?? 1, pageSize));
         }
