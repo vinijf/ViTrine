@@ -5,10 +5,6 @@
     <UserSecretsId>aspnet-ViTrine-2C3D7435-3A64-4F7B-9787-E2AEF8967F74</UserSecretsId>
   </PropertyGroup>
 
-  <Target Name="PrePublishTarget" AfterTargets="Publish">
-    <Exec Command="dotnet ef database update" />
-  </Target>
-
   <ItemGroup>
     <Compile Remove="Data\Migrations\20200603233516_ViTrineMigration.cs" />
     <Compile Remove="Data\Migrations\20200603233516_ViTrineMigration.Designer.cs" />
