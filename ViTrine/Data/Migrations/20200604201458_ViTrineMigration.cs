@@ -46,25 +46,6 @@ namespace ViTrine.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Favoritos",
-                columns: table => new
-                {
-                    FavoritoId = table.Column<Guid>(nullable: false),
-                    LojaId = table.Column<Guid>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Favoritos", x => x.FavoritoId);
-                    table.ForeignKey(
-                        name: "FK_Favoritos_Lojas_LojaId",
-                        column: x => x.LojaId,
-                        principalTable: "Lojas",
-                        principalColumn: "LojaId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Produtos",
                 columns: table => new
                 {
@@ -114,11 +95,6 @@ namespace ViTrine.Data.Migrations
                 column: "LojaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Favoritos_LojaId",
-                table: "Favoritos",
-                column: "LojaId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Mensagens_ChatId",
                 table: "Mensagens",
                 column: "ChatId");
@@ -131,9 +107,6 @@ namespace ViTrine.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Favoritos");
-
             migrationBuilder.DropTable(
                 name: "Mensagens");
 

@@ -243,25 +243,6 @@ namespace ViTrine.Data.Migrations
                     b.ToTable("Chats");
                 });
 
-            modelBuilder.Entity("ViTrine.Models.Favorito", b =>
-                {
-                    b.Property<Guid>("FavoritoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("LojaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("FavoritoId");
-
-                    b.HasIndex("LojaId");
-
-                    b.ToTable("Favoritos");
-                });
-
             modelBuilder.Entity("ViTrine.Models.Loja", b =>
                 {
                     b.Property<Guid>("LojaId")
@@ -421,15 +402,6 @@ namespace ViTrine.Data.Migrations
                 });
 
             modelBuilder.Entity("ViTrine.Models.Chat", b =>
-                {
-                    b.HasOne("ViTrine.Models.Loja", "Loja")
-                        .WithMany()
-                        .HasForeignKey("LojaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ViTrine.Models.Favorito", b =>
                 {
                     b.HasOne("ViTrine.Models.Loja", "Loja")
                         .WithMany()
