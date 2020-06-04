@@ -28,7 +28,7 @@ namespace ViTrine.Models
         public bool PromocaoProduto { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
-        public double PrecoProduto { get; set; }
+        public decimal PrecoProduto { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [MinLength(5, ErrorMessage = "O campo Descrição deve conter no mínimo 5 caracteres.")]

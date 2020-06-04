@@ -73,7 +73,7 @@ namespace ViTrine.Data.Migrations
                     NomeProduto = table.Column<string>(maxLength: 256, nullable: false),
                     CategoriaProduto = table.Column<string>(maxLength: 256, nullable: false),
                     PromocaoProduto = table.Column<bool>(nullable: false),
-                    PrecoProduto = table.Column<double>(nullable: false),
+                    PrecoProduto = table.Column<decimal>(nullable: false),
                     DescricaoProduto = table.Column<string>(maxLength: 256, nullable: false),
                     LojaId = table.Column<Guid>(nullable: false)
                 },

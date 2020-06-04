@@ -10,7 +10,7 @@ using ViTrine.Data;
 namespace ViTrine.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200602173202_ViTrineMigration")]
+    [Migration("20200603233516_ViTrineMigration")]
     partial class ViTrineMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -354,8 +354,8 @@ namespace ViTrine.Data.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<double>("PrecoProduto")
-                        .HasColumnType("float");
+                    b.Property<decimal>("PrecoProduto")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("PromocaoProduto")
                         .HasColumnType("bit");

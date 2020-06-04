@@ -352,8 +352,8 @@ namespace ViTrine.Data.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<double>("PrecoProduto")
-                        .HasColumnType("float");
+                    b.Property<decimal>("PrecoProduto")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("PromocaoProduto")
                         .HasColumnType("bit");
