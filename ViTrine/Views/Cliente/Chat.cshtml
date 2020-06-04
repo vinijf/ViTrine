@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ViTrine.Models.Chat>
+
+@{
+    Layout = "_LayoutCliente";
+}
+
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('@Url.Content("~/images/bg-01.jpg")');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Mensagens
+    </h2>
+</section>
+<section class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Autor
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Mensagem" asp-route-id="@item.ChatId">
+                                    @Html.DisplayFor(modelItem => item.AutorMensagem)
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@item.ChatId">Deletar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

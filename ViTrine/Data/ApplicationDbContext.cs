@@ -17,6 +17,5 @@ namespace ViTrine.Data
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Mensagem> Mensagens { get; set; }
-        public DbSet<Favorito> Favoritos { get; set; }
     }
 }

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ViTrine.Models.Mensagem>
+
+@{
+    Layout = "_LayoutCliente";
+}
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('@Url.Content("~/images/bg-01.jpg")');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Mensagens
+    </h2>
+</section>
+<section class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <p>
+                <a asp-action="Send" asp-route-id="@ViewBag.ChatId">Responder</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Mensagem
+                        </th>
+                        <th>
+                            Data
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TextoMensagem)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataMensagem)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

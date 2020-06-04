@@ -43,29 +43,6 @@ namespace ViTrine.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult New(Guid Id)
-        {
-            return View(new Chat() { LojaId = Id });
-        }
-
-        [HttpPost]
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> New(Chat c, Guid Id)
-        {
-            if (ModelState.IsValid)
-            {
-                c.UserId = User.Identity.Name;
-
-                ctx.Chats.Add(c);
-                await ctx.SaveChangesAsync();
-                return RedirectToAction("Send", new { id = c.ChatId });
-            }
-            return View(c);
-        }
-
-        [HttpGet]
-        [Authorize]
         public IActionResult Send(Guid Id)
         {
             return View(new Mensagem() { ChatId = Id });
@@ -94,7 +71,7 @@ namespace ViTrine.Controllers
             ctx.Chats.Remove(c);
             await ctx.SaveChangesAsync();
 
-            return RedirectToAction("Index", new { c.LojaId });
+            return RedirectToAction("Index", new { id = c.LojaId });
         }
     }
 }
