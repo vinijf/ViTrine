@@ -84,6 +84,15 @@ namespace ViTrine.Controllers
             return View(l);
         }
 
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Chat()
+        {
+            var chats = await ctx.Chats.Where(c => c.UserId == User.Identity.Name).ToListAsync();
+
+            return View(chats);
+        }
+
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -98,15 +107,6 @@ namespace ViTrine.Controllers
                 return RedirectToAction("Send", new { id = c.ChatId });
             }
             return View(c);
-        }
-
-        [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> Chat()
-        {
-            var chats = await ctx.Chats.Where(c => c.UserId == User.Identity.Name).ToListAsync();
-
-            return View(chats);
         }
 
         [HttpGet]
